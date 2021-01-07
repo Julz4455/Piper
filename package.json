@@ -1,0 +1,27 @@
+{
+  "name": "piper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cluster.js",
+  "scripts": {
+    "start": "node cluster.js",
+    "test": "echo \"No Test Specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julz4455/Piper.git"
+  },
+  "author": "Constanze",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Julz4455/Piper.gt/issues"
+  },
+  "homepage": "https://github.com/Julz4455/Piper.gt#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "dotenv": "^8.2.0",
+    "eris": "https://github.com/abalabahaha/eris/tarball/master",
+    "eris-sharder": "^1.10.0",
+    "node-fetch": "^2.6.1"
+  }
+}
