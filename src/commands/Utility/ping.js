@@ -2,7 +2,7 @@ module.exports = {
   name: 'ping',
   description: 'Pong!',
   aliases: ['pingpong', 'pong'],
-  launch(client, msg, args) {
-    msg.channel.createMessage(msg.guild.shard.ping)
+  launch(_client, msg, _args) {
+    msg.channel.createMessage(`Pong!\n\`${msg.channel.guild.shard.latency}ms\``)
   }
 }

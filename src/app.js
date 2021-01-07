@@ -15,12 +15,13 @@ process.on('uncaughtException', e => {
 })
 
 module.exports = class extends Base {
-  constructor(bot) {
-    super(bot)
+  constructor(setup) {
+    super(setup)
   }
 
-  launch() {
+  async launch() {
     console.log(`Doing initial client setup`)
+    this.bot.ipc = this.ipc
     this.bot.commands = new Eris.Collection()
     this.bot.events = new Eris.Collection()
     this.bot.cooldowns = new Eris.Collection()
@@ -33,7 +34,7 @@ module.exports = class extends Base {
       for(const f of (fs.readdirSync(`${__dirname}/commands/${c}`).filter(x => !x.startsWith('_') && x.endsWith('.js')))) {
         try {
           if(process.env.DEBUG)
-            console.log(`Loading command: ${f}`)
+            console.log(`Loading command: ${f.split('.')[0]}`)
           const command = require(`${__dirname}/commands/${c}/${f}`)
           this.bot.commands.set(command.name, {...command, category: c})
         } catch(e) {
@@ -47,16 +48,14 @@ module.exports = class extends Base {
     for(const ev of eventEntries) {
       try {
         if(process.env.DEBUG)
-          console.log(`Loading event: ${ev}`)
+          console.log(`Loading event: ${ev.split('.')[0]}`)
         const event = require(`${__dirname}/events/${ev}`)
-        this.bot.on(ev, event.bind(null, this.bot))
+        this.bot.on(ev.split('.')[0], event.bind(null, this.bot))
       } catch(e) {
         console.log(`Failure to load event: ${ev}`)
         console.log(e)
       }
     }
-    
-    console.log(this.bot.listeners('messageCreate'))
 
     console.log(`Loaded all commands and events. Awaiting ready for ${this.bot.user.username}#${this.bot.user.discriminator}`)
   }
