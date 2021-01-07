@@ -1,9 +1,8 @@
 module.exports = (client) => {
-  console.log("running now")
   try {
     console.log(`Ready from ${client.user.username}#${client.user.discriminator}`)
     client.editStatus(`online`, {
-      name: 'BeatSaber',
+      name: `BeatSaber | ${client.shards.size} shard${client.shards.size > 1 ? 's' : ''}`,
       type: 0
     })
   } catch(e) {

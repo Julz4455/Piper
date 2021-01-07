@@ -51,6 +51,8 @@ module.exports = class extends Base {
           console.log(`Loading event: ${ev.split('.')[0]}`)
         const event = require(`${__dirname}/events/${ev}`)
         this.bot.on(ev.split('.')[0], event.bind(null, this.bot))
+
+        console.log(this.bot.rawListeners(ev.split('.')[0]))
       } catch(e) {
         console.log(`Failure to load event: ${ev}`)
         console.log(e)
@@ -58,5 +60,8 @@ module.exports = class extends Base {
     }
 
     console.log(`Loaded all commands and events. Awaiting ready for ${this.bot.user.username}#${this.bot.user.discriminator}`)
+    
+    // TODO: Find a fix for this shitty issue
+    require(`${__dirname}/events/ready`)(this.bot)
   }
 }
