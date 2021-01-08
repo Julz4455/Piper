@@ -1,10 +1,12 @@
 {
   "name": "piper",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small Discord bot template for developers.",
   "main": "cluster.js",
   "scripts": {
     "start": "node cluster.js",
+    "debug": "DEBUG=1 node cluster.js",
+    "nodemon": "DEBUG=1 nodemon cluster.js",
     "test": "echo \"No Test Specified\""
   },
   "repository": {
@@ -14,9 +16,9 @@
   "author": "Constanze",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Julz4455/Piper.gt/issues"
+    "url": "https://github.com/Julz4455/Piper/issues"
   },
-  "homepage": "https://github.com/Julz4455/Piper.gt#readme",
+  "homepage": "https://github.com/Julz4455/Piper#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0",
@@ -24,5 +26,8 @@
     "eris-sharder": "^1.10.0",
     "hastebin-gen": "^2.0.5",
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "*"
   }
 }

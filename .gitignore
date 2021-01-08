@@ -1,2 +1,8 @@
+# pesky node_modules
 node_modules/
+
+# secrets
 .env
+
+# no more lock files
+*.lock
