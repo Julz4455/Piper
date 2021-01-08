@@ -22,6 +22,7 @@
     "dotenv": "^8.2.0",
     "eris": "https://github.com/abalabahaha/eris/tarball/master",
     "eris-sharder": "^1.10.0",
+    "hastebin-gen": "^2.0.5",
     "node-fetch": "^2.6.1"
   }
 }

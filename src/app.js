@@ -22,6 +22,7 @@ module.exports = class extends Base {
   async launch() {
     console.log(`Doing initial client setup`)
     this.bot.ipc = this.ipc
+    this.bot.clusterID = this.clusterID
     this.bot.commands = new Eris.Collection()
     this.bot.events = new Eris.Collection()
     this.bot.cooldowns = new Eris.Collection()
@@ -58,6 +59,11 @@ module.exports = class extends Base {
         console.log(e)
       }
     }
+
+    this.bot.ipc.register('requestShardMap', _ => {
+      console.log(this.bot.guildShardMap)
+      return this.bot.guildShardMap
+    })
 
     console.log(`Loaded all commands and events. Awaiting ready for ${this.bot.user.username}#${this.bot.user.discriminator}`)
     
